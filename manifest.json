@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Spell Checker",
-  "version": "1.0",
-  "description": "Automatically checks spelling errors on every webpage.",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "version": "1.1",
+  "description": "Automatically checks spelling errors and notifies the user.",
+  "permissions": ["activeTab", "scripting", "storage", "notifications"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
