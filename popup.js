@@ -2,7 +2,7 @@ document.getElementById("checkSpelling").addEventListener("click", () => {
     chrome.storage.local.get("apiKey", (data) => {
         const apiKey = data.apiKey;
         if (!apiKey) {
-            alert("API key is missing. Please configure it.");
+            console.error("API key is missing. Please configure it.");
             return;
         }
 
@@ -22,8 +22,8 @@ function checkSpellingOnPage(apiKey) {
     fetch(`https://api.textgears.com/spelling?key=${apiKey}&text=${encodeURIComponent(text)}&language=en-GB`)
         .then(response => response.json())
         .then(data => {
-            if (data.errors) {
-                data.errors.forEach(error => {
+            if (data?.response?.errors?.length) {
+                data.response.errors.forEach(error => {
                     highlightError(error.bad);
                 });
             }
